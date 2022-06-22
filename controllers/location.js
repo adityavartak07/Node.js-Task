@@ -11,11 +11,9 @@ export const register = async (req, res) => {
     try {
         // console.log(req.body)
         let price = 0;
-        const location = await Location.findOne({cityname :city })
+        const location = await Location.findOne({cityname :city }) // Checking the amount per km for the respective city
         price = distance * location.amountperkm;
 
-
-        
 
         let noemail = ["london","paris"];
         console.log(distance,city,price);
@@ -51,17 +49,11 @@ export const addlocation = async (req, res) => {
     // console.log("hello");
     const location= req.body;
         console.log(location);
-
-    
-       
-
-        
-        
       
         try {
             let newlocation ;
             location.map(async (locate)=>{
-                newlocation = new Location(locate);
+                newlocation = new Location(locate);  //  saving each city in database for admin and conodition checking
                 await newlocation.save();
             })
             

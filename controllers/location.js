@@ -19,7 +19,7 @@ export const register = async (req, res) => {
         console.log(distance,city,price);
         let flag = false;
 
-        if((distance < 1000 && distance > 30) || price < 50){
+        if((distance < 1000 && distance > 30) && price < 50){
 
             if(city!="" && !noemail.includes(city)){
                 flag = true;
